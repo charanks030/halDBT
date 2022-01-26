@@ -1,0 +1,73 @@
+{{ config(
+    indexes = [{'columns':['_airbyte_emitted_at'],'type':'btree'}],
+    unique_key = '_airbyte_ab_id',
+    schema = "_airbyte_halcapitaldb",
+    tags = [ "top-level-intermediate" ]
+) }}
+-- SQL model to build a hash column based on the values of this record
+-- depends_on: {{ ref('users_ab2') }}
+select
+    {{ dbt_utils.surrogate_key([
+        '_id',
+        'dob',
+        adapter.quote('name'),
+        'email',
+        'county',
+        'status',
+        'address',
+        'country',
+        'partner',
+        'website',
+        'dukareid',
+        'latitude',
+        'premises',
+        'settings',
+        'usertype',
+        'cognitoid',
+        'createdat',
+        'lastlogin',
+        'longitude',
+        'pinnumber',
+        'updatedat',
+        'updatedby',
+        'employment',
+        boolean_to_string('isverified'),
+        'nationalid',
+        'nooforders',
+        'postalcode',
+        'erpusercode',
+        'phonenumber',
+        'businessname',
+        'businesstype',
+        'constituency',
+        'dukausertype',
+        'incomebizavg',
+        'pinimagepath',
+        'profileimage',
+        'salesrepname',
+        'accommodation',
+        'businessimage',
+        'monthlyincome',
+        'noofemployees',
+        'noofsuppliers',
+        'orderpriceavg',
+        'monthlyrentbiz',
+        boolean_to_string('outstandingloan'),
+        'salesrepcompany',
+        'yearofoperation',
+        boolean_to_string('isaccountverified'),
+        'monthlysalariesbiz',
+        'nationalidimagepath',
+        'salesrepphonenumber',
+        'loanoutstandingperiod',
+        'costofmonthlyutilities',
+        boolean_to_string('suppliercreditfacility'),
+        'businessregistrationnumber',
+        'businessregistrationnumberimagepath',
+    ]) }} as _airbyte_users_hashid,
+    tmp.*
+from {{ ref('users_ab2') }} tmp
+-- users
+where 1 = 1
+{{ incremental_clause('_airbyte_emitted_at') }}
+

@@ -1,0 +1,18 @@
+version: 2
+sources:
+- name: halcapitaldb
+  quoting:
+    database: true
+    schema: false
+    identifier: false
+  tables:
+  - name: _airbyte_raw_offers
+  - name: _airbyte_raw_phonelists
+  - name: _airbyte_raw_suppliers
+  - name: _airbyte_raw_transactions
+  - name: _airbyte_raw_userbalances
+  - name: _airbyte_raw_usercredits
+  - name: _airbyte_raw_usercreditscores
+  - name: _airbyte_raw_usercredittransactions
+  - name: _airbyte_raw_userdebittransactions
+  - name: _airbyte_raw_users

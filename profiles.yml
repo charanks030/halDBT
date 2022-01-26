@@ -1,0 +1,17 @@
+config:
+  partial_parse: true
+  printer_width: 120
+  send_anonymous_usage_stats: false
+  use_colors: true
+normalize:
+  outputs:
+    prod:
+      dbname: halcapitaldb
+      host: db-postgresql-nyc3-55393-do-user-6778823-0.b.db.ondigitalocean.com
+      pass: Ghyy4U8PWrAAbAut
+      port: 25060
+      schema: public
+      threads: 32
+      type: postgres
+      user: doadmin
+  target: prod
