@@ -15,7 +15,7 @@ select
     cast(tenure as {{ dbt_utils.type_float() }}) as tenure,
     --cast(enddate as {{ dbt_utils.type_timestamp() }}) as enddate,
     --(enddate at time zone 'utc')::{{ dbt_utils.type_timestamp() }} as enddate,
-    {{ enddate at time zone 'utc' as {{ dbt_utils.type_timestamp() }} }} as enddate,
+    cast(enddate as {{ dbt_utils.type_timestamp() }} at time zone 'utc') as enddate,
     cast(partner as {{ dbt_utils.type_string() }}) as partner,
     cast({{ adapter.quote('comments') }} as {{ dbt_utils.type_string() }}) as {{ adapter.quote('comments') }},
     cast(createdat as {{ dbt_utils.type_timestamp() }}) as createdat,
