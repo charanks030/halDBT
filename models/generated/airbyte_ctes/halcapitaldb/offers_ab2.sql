@@ -13,7 +13,7 @@ select
     ruleid,
     cast(status as {{ dbt_utils.type_string() }}) as status,
     cast(tenure as {{ dbt_utils.type_float() }}) as tenure,
-    cast(enddate as {{ dbt_utils.type_timestamp() }}) as enddate,
+    cast(enddate at time zone 'utc' as {{ dbt_utils.type_timestamp() }} ),
     cast(partner as {{ dbt_utils.type_string() }}) as partner,
     cast({{ adapter.quote('comments') }} as {{ dbt_utils.type_string() }}) as {{ adapter.quote('comments') }},
     cast(createdat as {{ dbt_utils.type_timestamp() }}) as createdat,
