@@ -9,8 +9,8 @@
 select
     cast(_id as {{ dbt_utils.type_string() }}) as _id,
     cast(sign as {{ dbt_utils.type_string() }}) as sign,
-    cast(createdat as {{ dbt_utils.type_timestamp() }}) as createdat,
-    cast(updatedat as {{ dbt_utils.type_timestamp() }}) as updatedat,
+    cast(createdat as {{ dbt_utils.type_string() }}) as createdat,
+    cast(updatedat as {{ dbt_utils.type_string() }}) as updatedat,
     cast(phonenumber as {{ dbt_utils.type_string() }}) as phonenumber,
     _airbyte_ab_id,
     _airbyte_emitted_at,
